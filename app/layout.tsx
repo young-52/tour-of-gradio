@@ -3,8 +3,8 @@ import { Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
-import NavBar from "@/components/nav-bar";
 import Script from "next/script";
+import NavBar from "@/components/nav-bar";
 
 export const metadata: Metadata = {
   title: "Tour of Gradio",

@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import AppearAnimation from "@/components/appear-animation";
+import PostNavigation from "@/components/post-navigation";
 import { Separator } from "@/components/ui/separator";
 import {
   getAllPostFileNames,
@@ -18,6 +19,14 @@ export default async function Page({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  const data = (
+    await Promise.all(
+      getAllPostFileNames().map(async (fileName) => {
+        const { frontmatter } = await getContentAndFrontmatter(fileName);
+        return [fileName, frontmatter] as const;
+      }),
+    )
+  ).sort(([, a], [, b]) => a.id - b.id);
 
   try {
     const { frontmatter, content } = await getContentAndFrontmatter(slug);
@@ -34,6 +43,11 @@ export default async function Page({
           <article className="prose dark:prose-invert text-justify">
             {content}
           </article>
+          <PostNavigation
+            slug={slug}
+            subDir="tours"
+            order={data.map(([fileName]) => fileName)}
+          />
         </div>
       </AppearAnimation>
     );
