@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
 import NavBar from "@/components/nav-bar";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Tour of Gradio",
@@ -33,6 +34,12 @@ export default async function RootLayout({
     >
       <head>
         <meta name="theme-color" content="var(--background)" />
+        <Script
+          type="module"
+          src="https://gradio.s3-us-west-2.amazonaws.com/6.6.0/gradio.js"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
       </head>
       <body>
         <ThemeProvider

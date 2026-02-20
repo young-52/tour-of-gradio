@@ -15,7 +15,7 @@ export default async function Page() {
         return [fileName, frontmatter] as const;
       }),
     )
-  ).sort(([, a], [, b]) => b.id - a.id);
+  ).sort(([, a], [, b]) => a.id - b.id);
 
   return (
     <div className="flex flex-col w-full mt-20 gap-16">

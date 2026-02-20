@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { type CompileMDXResult, compileMDX } from "next-mdx-remote/rsc";
+import HelloWorld from "@/components/hello-world";
 
 const postsDirectory = path.join(process.cwd(), "tours");
 
@@ -30,6 +31,9 @@ export async function getContentAndFrontmatter(
       mdxOptions: {
         format: "mdx",
       },
+    },
+    components: {
+      HelloWorld,
     },
   });
 }
