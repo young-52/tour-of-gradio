@@ -72,7 +72,10 @@ export default function SystemPromptDemo() {
     setInput("");
     setError("");
 
-    const baseHistory = [...messages, { role: "user" as const, content: userText }];
+    const baseHistory = [
+      ...messages,
+      { role: "user" as const, content: userText },
+    ];
     const assistantIndex = baseHistory.length;
     setMessages([...baseHistory, { role: "assistant", content: "" }]);
     setIsStreaming(true);
@@ -233,7 +236,9 @@ export default function SystemPromptDemo() {
               </button>
             </div>
 
-            {error ? <p className="mt-2 text-sm text-destructive">{error}</p> : null}
+            {error ? (
+              <p className="mt-2 text-sm text-destructive">{error}</p>
+            ) : null}
           </div>
         </div>
       </div>

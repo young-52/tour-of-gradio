@@ -43,7 +43,7 @@ function detokenize(tokens: string[]): string {
 }
 
 const TRANSITIONS: Record<string, Candidate[]> = {
-  "김치찌개를": [
+  김치찌개를: [
     { word: "먹었다", p: 0.55 },
     { word: "주문했다", p: 0.25 },
     { word: "끓였다", p: 0.15 },
@@ -144,7 +144,9 @@ const GUIDE_SECTIONS = [
 ];
 
 export default function LlmNextTokenDemo() {
-  const [prompt, setPrompt] = useState("나는 오늘 커피를 마셨다 . 그래서 지금 너무");
+  const [prompt, setPrompt] = useState(
+    "나는 오늘 커피를 마셨다 . 그래서 지금 너무",
+  );
   const [tokens, setTokens] = useState<string[]>(() => tokenize(prompt));
 
   const candidates = useMemo(() => getCandidates(tokens), [tokens]);
@@ -198,12 +200,19 @@ export default function LlmNextTokenDemo() {
             <div className="flex flex-wrap items-center justify-between gap-2">
               <h3 className="text-base font-semibold">다음 단어 예측 실습</h3>
               <span className="text-xs text-muted-foreground">
-                현재 문맥(마지막 3개): <span className="font-semibold">{context}</span>
+                현재 문맥(마지막 3개):{" "}
+                <span className="font-semibold">{context}</span>
               </span>
             </div>
 
-            <label className="mt-3 block text-sm font-medium">시작 문장</label>
+            <label
+              htmlFor="prompt-input"
+              className="mt-3 block text-sm font-medium"
+            >
+              시작 문장
+            </label>
             <textarea
+              id="prompt-input"
               value={prompt}
               onChange={(event) => syncPrompt(event.target.value)}
               rows={3}
@@ -236,7 +245,9 @@ export default function LlmNextTokenDemo() {
             </div>
 
             <div className="mt-4 rounded-xl border border-border/70 bg-muted/35 p-3">
-              <p className="text-xs font-semibold text-muted-foreground">현재 생성 문장</p>
+              <p className="text-xs font-semibold text-muted-foreground">
+                현재 생성 문장
+              </p>
               <p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed">
                 {generated || "..."}
               </p>
@@ -259,7 +270,10 @@ export default function LlmNextTokenDemo() {
                   .sort((a, b) => b.p - a.p)
                   .slice(0, 6)
                   .map((candidate) => (
-                    <div key={candidate.word} className="flex items-center gap-3">
+                    <div
+                      key={candidate.word}
+                      className="flex items-center gap-3"
+                    >
                       <div className="w-24 shrink-0 text-sm font-medium">
                         {candidate.word}
                       </div>
@@ -278,8 +292,9 @@ export default function LlmNextTokenDemo() {
             </div>
 
             <p className="mt-3 text-xs text-muted-foreground">
-              참고: 이 실습은 교육용 단순 확률표를 사용합니다. 실제 LLM은 훨씬 큰
-              신경망으로 확률을 계산하지만, 한 단어씩 이어 생성하는 원리는 동일합니다.
+              참고: 이 실습은 교육용 단순 확률표를 사용합니다. 실제 LLM은 훨씬
+              큰 신경망으로 확률을 계산하지만, 한 단어씩 이어 생성하는 원리는
+              동일합니다.
             </p>
           </div>
         </div>

@@ -5,7 +5,11 @@ type InputMessage = {
   content: string;
 };
 
-function pushSSEDelta(line: string, controller: ReadableStreamDefaultController, encoder: TextEncoder) {
+function pushSSEDelta(
+  line: string,
+  controller: ReadableStreamDefaultController,
+  encoder: TextEncoder,
+) {
   if (!line.startsWith("data:")) return;
   const payload = line.replace(/^data:\s*/, "");
   if (!payload || payload === "[DONE]") return;
@@ -51,7 +55,9 @@ export async function POST(request: NextRequest) {
     }
 
     const safeHistory = (body.history ?? [])
-      .filter((message) => message.role === "user" || message.role === "assistant")
+      .filter(
+        (message) => message.role === "user" || message.role === "assistant",
+      )
       .map((message) => ({
         role: message.role,
         content: message.content.trim(),
@@ -88,7 +94,10 @@ export async function POST(request: NextRequest) {
 
     if (!upstreamResponse.ok) {
       const detail = await upstreamResponse.text();
-      return NextResponse.json({ error: detail }, { status: upstreamResponse.status });
+      return NextResponse.json(
+        { error: detail },
+        { status: upstreamResponse.status },
+      );
     }
 
     if (!upstreamResponse.body) {
