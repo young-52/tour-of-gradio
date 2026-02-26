@@ -82,7 +82,10 @@ export default function PromptingMethodDemo() {
     setError("");
 
     const userLabel = `${activeMode.title} 프롬프트\n${prompt}`;
-    const baseHistory = [...messages, { role: "user" as const, content: userLabel }];
+    const baseHistory = [
+      ...messages,
+      { role: "user" as const, content: userLabel },
+    ];
     const assistantIndex = baseHistory.length;
     setMessages([...baseHistory, { role: "assistant", content: "" }]);
     setIsStreaming(true);
@@ -156,7 +159,9 @@ export default function PromptingMethodDemo() {
                 }`}
               >
                 <p className="text-sm font-semibold">{item.title}</p>
-                <p className="mt-1 text-xs text-muted-foreground">{item.subtitle}</p>
+                <p className="mt-1 text-xs text-muted-foreground">
+                  {item.subtitle}
+                </p>
               </button>
             ))}
           </div>
@@ -229,7 +234,9 @@ export default function PromptingMethodDemo() {
               </div>
             </div>
 
-            {error ? <p className="mt-2 text-sm text-destructive">{error}</p> : null}
+            {error ? (
+              <p className="mt-2 text-sm text-destructive">{error}</p>
+            ) : null}
           </div>
         </div>
       </div>
