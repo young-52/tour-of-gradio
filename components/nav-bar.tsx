@@ -62,6 +62,16 @@ export default function NavBar() {
                     "bg-gradient-to-r from-primary to-primary bg-[length:0%_100%] bg-no-repeat bg-left hover:bg-[length:100%_100%] hover:text-primary-foreground transition-[background-size] duration-500 ease-out hover:bg-transparent",
                   )}
                 >
+                  <Link href="/ground">써보기</Link>
+                </NavigationMenuLink>
+                <NavigationMenuLink
+                  asChild
+                  className={cn(
+                    navigationMenuTriggerStyle(),
+                    "bg-transparent h-9 px-4 relative overflow-hidden transition-all rounded-2xl",
+                    "bg-gradient-to-r from-primary to-primary bg-[length:0%_100%] bg-no-repeat bg-left hover:bg-[length:100%_100%] hover:text-primary-foreground transition-[background-size] duration-500 ease-out hover:bg-transparent",
+                  )}
+                >
                   <Link href="/archives">아카이브</Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>

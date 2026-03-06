@@ -40,6 +40,15 @@ export default async function RootLayout({
           crossOrigin="anonymous"
           strategy="afterInteractive"
         />
+        <link
+          rel="stylesheet"
+          href="https://gradio-lite-2026.s3.ap-southeast-2.amazonaws.com/lite.css"
+        />
+        <script
+          src="https://gradio-lite-2026.s3.ap-southeast-2.amazonaws.com/lite.js"
+          type="module"
+          crossOrigin="anonymous"
+        />
       </head>
       <body>
         <ThemeProvider
