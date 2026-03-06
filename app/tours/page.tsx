@@ -30,18 +30,35 @@ export default async function Page() {
       <Separator />
       <div className="flex flex-col gap-7">
         {data.map(([fileName, frontmatter]) => (
-          <div key={frontmatter.title} className="flex items-center gap-6">
-            <span className="text-xl font-base text-muted-foreground">
-              #{frontmatter.id}
-            </span>
-            <div className="flex flex-col gap-1.5">
-              <Link
-                href={`/tours/${fileName}`}
-                className="text-lg font-semibold"
-              >
-                {frontmatter.icon} {frontmatter.title}
-              </Link>
-              <div className="text-sm">{frontmatter.description}</div>
+          <div key={frontmatter.title} className="flex flex-col gap-6">
+            {fileName === "what-is-llm" && (
+              <h2 className="mt-6 text-muted-foreground">
+                파트 1 — LLM이 뭐예요?
+              </h2>
+            )}
+            {fileName === "what-is-prompting" && (
+              <h2 className="mt-6 text-muted-foreground">
+                파트 2 — Prompting이 뭐예요?
+              </h2>
+            )}
+            {fileName === "what-is-gradio" && (
+              <h2 className="mt-6 text-muted-foreground">
+                파트 3 — Gradio가 뭐예요?
+              </h2>
+            )}
+            <div className="flex items-center gap-6">
+              <span className="text-xl font-base text-muted-foreground">
+                #{frontmatter.id}
+              </span>
+              <div className="flex flex-col gap-1.5">
+                <Link
+                  href={`/tours/${fileName}`}
+                  className="text-lg font-semibold"
+                >
+                  {frontmatter.icon} {frontmatter.title}
+                </Link>
+                <div className="text-sm">{frontmatter.description}</div>
+              </div>
             </div>
           </div>
         ))}
