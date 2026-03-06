@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { type CompileMDXResult, compileMDX } from "next-mdx-remote/rsc";
 import HelloWorld from "@/components/hello-world";
+import ExampleBox from "@/components/example-box";
 import LlmNextTokenDemo from "@/components/llm-next-token-demo";
 import PromptingMethodDemo from "@/components/prompting-method-demo";
 import SystemPromptDemo from "@/components/system-prompt-demo";
@@ -37,6 +38,7 @@ export async function getContentAndFrontmatter(
     },
     components: {
       HelloWorld,
+      ExampleBox,
       LlmNextTokenDemo,
       PromptingMethodDemo,
       SystemPromptDemo,
