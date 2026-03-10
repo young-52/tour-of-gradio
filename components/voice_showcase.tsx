@@ -246,9 +246,11 @@ export default function VoiceShowcase() {
                       멈추기
                     </button>
                   </div>
-                  {recordedUrl ? (
-                    <audio controls src={recordedUrl} className="mt-2 w-full" />
-                  ) : null}
+                  {recordedUrl && (
+                    <audio controls src={recordedUrl} className="mt-2 w-full">
+                      <track kind="captions" />
+                    </audio>
+                  )}
                 </div>
               </div>
             </div>
