@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 type Hotspot = {
   top: string;
   left: string;
@@ -154,10 +156,12 @@ export default function HotspotImage() {
   return (
     <div className="my-8">
       <div className="relative mx-auto w-full max-w-5xl overflow-visible">
-        <img
+        <Image
           src="/image_showcase.png"
           alt="Gradio image showcase with hotspots"
-          className="block w-full rounded-xl"
+          width={1686}
+          height={3112}
+          className="block w-full h-auto rounded-xl"
         />
 
         {hotspots.map((hotspot, idx) => (

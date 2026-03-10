@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 type Hotspot = {
   top: string;
   left: string;
@@ -239,10 +241,12 @@ export default function HotspotAudio() {
   return (
     <div className="my-8">
       <div className="relative mx-auto w-full max-w-5xl">
-        <img
+        <Image
           src="/voice_showcase.png"
           alt="Gradio voice showcase with hotspots"
-          className="block w-full rounded-xl"
+          width={1478}
+          height={2850}
+          className="block w-full h-auto rounded-xl"
         />
 
         {hotspots.map((hotspot, idx) => (

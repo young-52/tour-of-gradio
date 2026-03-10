@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useMemo, useState } from "react";
 
 type ModelName = "gpt-4o-mini" | "gpt-4o";
@@ -112,10 +113,12 @@ export default function ImageShowcase() {
               />
 
               {previewUrl ? (
-                <img
+                <Image
                   src={previewUrl}
                   alt="Uploaded preview"
-                  className="mt-3 max-h-72 w-full rounded-xl border border-border/70 object-contain bg-background"
+                  width={800}
+                  height={800}
+                  className="mt-3 max-h-72 w-full h-auto rounded-xl border border-border/70 object-contain bg-background"
                 />
               ) : null}
             </div>
@@ -163,8 +166,8 @@ export default function ImageShowcase() {
                 id="analysis-result"
                 value={result}
                 onChange={(event) => setResult(event.target.value)}
-                rows={16}
-                className="block text-left text-sm font-semibold text-foreground tracking-normal"
+                rows={14}
+                className="mt-2 h-64 w-full resize-none rounded-xl border border-input bg-background px-3 py-2 text-sm outline-none ring-0 focus:border-primary/60"
               />
             </div>
 
