@@ -21,7 +21,10 @@ export default function ImageShowcase() {
   const [isLoading, setIsLoading] = useState(false);
   const [previewUrl, setPreviewUrl] = useState("");
 
-  const canAnalyze = useMemo(() => !!imageFile && !isLoading, [imageFile, isLoading]);
+  const canAnalyze = useMemo(
+    () => !!imageFile && !isLoading,
+    [imageFile, isLoading],
+  );
 
   async function handleAnalyze() {
     setError("");
@@ -83,11 +86,14 @@ export default function ImageShowcase() {
           <div className="rounded-2xl border border-border/70 bg-background/90 p-4 md:p-5 lg:col-span-6">
             <h3 className="text-base font-semibold">Image Analysis (Vision)</h3>
             <p className="mt-1 text-sm text-muted-foreground">
-              AI는 이미지를 보고 이해할 수 있습니다. 사진을 업로드하면 이미지 속 사물, 글자, 상황을 분석해 설명합니다.
+              AI는 이미지를 보고 이해할 수 있습니다. 사진을 업로드하면 이미지 속
+              사물, 글자, 상황을 분석해 설명합니다.
             </p>
 
             <div className="mt-3 rounded-xl border border-border/70 bg-muted/35 p-3">
-              <p className="text-xs font-semibold text-muted-foreground">Upload Image</p>
+              <p className="text-xs font-semibold text-muted-foreground">
+                Upload Image
+              </p>
               <input
                 type="file"
                 accept="image/*"
@@ -115,7 +121,10 @@ export default function ImageShowcase() {
             </div>
 
             <div className="mt-3">
-              <label htmlFor="vision-model" className="text-sm font-semibold text-foreground">
+              <label
+                htmlFor="vision-model"
+                className="text-sm font-semibold text-foreground"
+              >
                 Vision Model
               </label>
               <select
@@ -144,7 +153,10 @@ export default function ImageShowcase() {
             </div>
 
             <div className="mt-4 rounded-xl border border-border/70 bg-muted/35 p-3">
-              <label htmlFor="analysis-result" className="text-xs font-semibold text-muted-foreground">
+              <label
+                htmlFor="analysis-result"
+                className="text-xs font-semibold text-muted-foreground"
+              >
                 Analysis Result
               </label>
               <textarea
@@ -156,7 +168,9 @@ export default function ImageShowcase() {
               />
             </div>
 
-            {error ? <p className="mt-2 text-sm text-destructive">{error}</p> : null}
+            {error ? (
+              <p className="mt-2 text-sm text-destructive">{error}</p>
+            ) : null}
           </div>
         </div>
       </div>

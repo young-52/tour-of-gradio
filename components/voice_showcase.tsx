@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 
 type GuideTabKey = "upload" | "record";
 type ModelName = "gpt-4o-mini-transcribe" | "gpt-4o-transcribe" | "whisper-1";
@@ -46,7 +46,10 @@ export default function VoiceShowcase() {
   const streamRef = useRef<MediaStream | null>(null);
   const chunksRef = useRef<BlobPart[]>([]);
 
-  const canTranscribe = useMemo(() => !!audioFile && !isLoading, [audioFile, isLoading]);
+  const canTranscribe = useMemo(
+    () => !!audioFile && !isLoading,
+    [audioFile, isLoading],
+  );
 
   function cleanupRecordingResources() {
     if (streamRef.current) {
@@ -77,9 +80,13 @@ export default function VoiceShowcase() {
       };
 
       recorder.onstop = () => {
-        const blob = new Blob(chunksRef.current, { type: recorder.mimeType || "audio/webm" });
+        const blob = new Blob(chunksRef.current, {
+          type: recorder.mimeType || "audio/webm",
+        });
         const ext = blob.type.includes("wav") ? "wav" : "webm";
-        const file = new File([blob], `recording.${ext}`, { type: blob.type || "audio/webm" });
+        const file = new File([blob], `recording.${ext}`, {
+          type: blob.type || "audio/webm",
+        });
 
         if (recordedUrl) {
           URL.revokeObjectURL(recordedUrl);
@@ -181,7 +188,9 @@ export default function VoiceShowcase() {
               </div>
 
               <ul className="mt-3 space-y-1.5 text-sm text-muted-foreground">
-                {GUIDE_SECTIONS.find((item) => item.title.includes(guideTab === "upload" ? "파일" : "녹음"))?.steps.map((step) => (
+                {GUIDE_SECTIONS.find((item) =>
+                  item.title.includes(guideTab === "upload" ? "파일" : "녹음"),
+                )?.steps.map((step) => (
                   <li key={step}>{step}</li>
                 ))}
               </ul>
@@ -191,13 +200,15 @@ export default function VoiceShowcase() {
           <div className="rounded-2xl border border-border/70 bg-background/90 p-4 md:p-5 lg:col-span-6">
             <h3 className="text-base font-semibold">🎙️ 음성 파일 전사</h3>
             <p className="mt-1 text-sm text-muted-foreground">
-              업로드한 음성 파일에 대한 전사본을 받을 수 있습니다. 
+              업로드한 음성 파일에 대한 전사본을 받을 수 있습니다.
             </p>
 
             <div className="mt-3 rounded-xl border border-border/70 bg-muted/35 p-3">
               <div className="space-y-3">
                 <div className="space-y-2">
-                  <p className="text-xs font-semibold text-muted-foreground">음성 파일 업로드</p>
+                  <p className="text-xs font-semibold text-muted-foreground">
+                    음성 파일 업로드
+                  </p>
                   <input
                     type="file"
                     accept="audio/*"

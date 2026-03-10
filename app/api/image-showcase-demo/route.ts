@@ -39,31 +39,37 @@ export async function POST(request: Request) {
     const base64Image = Buffer.from(bytes).toString("base64");
     const mimeType = file.type || "image/jpeg";
 
-    const upstreamResponse = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify({
-        model,
-        messages: [
-          {
-            role: "user",
-            content: [
-              { type: "text", text: "이 이미지에 무엇이 있는지 자세히 설명해줘." },
-              {
-                type: "image_url",
-                image_url: {
-                  url: `data:${mimeType};base64,${base64Image}`,
+    const upstreamResponse = await fetch(
+      "https://api.openai.com/v1/chat/completions",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify({
+          model,
+          messages: [
+            {
+              role: "user",
+              content: [
+                {
+                  type: "text",
+                  text: "이 이미지에 무엇이 있는지 자세히 설명해줘.",
                 },
-              },
-            ],
-          },
-        ],
-        max_tokens: 500,
-      }),
-    });
+                {
+                  type: "image_url",
+                  image_url: {
+                    url: `data:${mimeType};base64,${base64Image}`,
+                  },
+                },
+              ],
+            },
+          ],
+          max_tokens: 500,
+        }),
+      },
+    );
 
     const raw = await upstreamResponse.text();
     let payload: unknown = null;
