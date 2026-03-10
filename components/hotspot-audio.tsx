@@ -245,7 +245,7 @@ export default function HotspotAudio() {
     <div className="my-8">
       <div className="relative mx-auto w-full max-w-5xl">
         <Image
-          src="/voice_showcase.png"
+          src="/images/voice-showcase.png"
           alt="Gradio voice showcase with hotspots"
           width={1478}
           height={2850}

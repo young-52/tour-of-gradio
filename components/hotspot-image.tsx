@@ -160,7 +160,7 @@ export default function HotspotImage() {
     <div className="my-8">
       <div className="relative mx-auto w-full max-w-5xl overflow-visible">
         <Image
-          src="/image_showcase.png"
+          src="/images/image-showcase.png"
           alt="Gradio image showcase with hotspots"
           width={1686}
           height={3112}
