@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useId } from "react";
 
 type Hotspot = {
   top: string;
@@ -153,6 +154,8 @@ const hotspots: Hotspot[] = [
 ];
 
 export default function HotspotImage() {
+  const hotspotId = useId();
+
   return (
     <div className="my-8">
       <div className="relative mx-auto w-full max-w-5xl overflow-visible">
@@ -164,9 +167,9 @@ export default function HotspotImage() {
           className="block w-full h-auto rounded-xl"
         />
 
-        {hotspots.map((hotspot, idx) => (
+        {hotspots.map((hotspot) => (
           <div
-            key={idx}
+            key={`${hotspotId}-${hotspot.top}-${hotspot.left}`}
             className="group absolute box-border cursor-pointer border border-[rgba(203,151,67,0.7)] hover:bg-[rgba(224,221,211,0.15)]"
             style={{
               top: hotspot.top,
