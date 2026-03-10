@@ -5,11 +5,11 @@ import ExampleBox from "@/components/example-box";
 import HelloWorld from "@/components/hello-world";
 import HotspotAudio from "@/components/hotspot-audio";
 import HotspotImage from "@/components/hotspot-image";
-import ImageShowcase from "@/components/image_showcase";
+import ImageShowcase from "@/components/image-showcase";
 import LlmNextTokenDemo from "@/components/llm-next-token-demo";
 import PromptingMethodDemo from "@/components/prompting-method-demo";
 import SystemPromptDemo from "@/components/system-prompt-demo";
-import VoiceShowcase from "@/components/voice_showcase";
+import VoiceShowcase from "@/components/voice-showcase";
 
 const postsDirectory = path.join(process.cwd(), "tours");
 
