@@ -82,7 +82,7 @@ export const gradioExampleSections: Array<{
         href: "https://huggingface.co/spaces/HumanAIGC/OutfitAnyone",
         embedSrc: "https://humanaigc-outfitanyone.hf.space",
         description:
-          "사용자가 이미지를 업로드하면 옷 스타일을 바꾸거나 새롭게 입혀주는 AI 데모예요.",
+          "사용자가 이미지를 업로드하면 옷 스타일을 바꾸거나 새롭게 입혀주는 AI 데모입니다.",
         category: "Web demo services",
       },
     ],

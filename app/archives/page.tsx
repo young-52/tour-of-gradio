@@ -1,3 +1,4 @@
+import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
@@ -14,30 +15,39 @@ export default function Page() {
       </div>
       <Separator />
 
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+      <div className="grid grid-cols-2 gap-6 md:grid-cols-3">
         {gradioExamples.map((example, index) => (
           <Link
             key={example.slug}
             href={`/archives/${example.slug}`}
-            className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition hover:-translate-y-0.5 hover:border-foreground/30"
+            className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5"
           >
-            <div className="relative aspect-video w-full bg-muted">
+            <div className="relative aspect-[16/10] w-full overflow-hidden bg-muted">
               <Image
                 src={example.imageSrc}
                 alt={example.title}
                 fill
-                className="object-cover transition duration-300 group-hover:scale-[1.02]"
-                sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 200px"
-                priority={index < 4}
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 300px"
+                priority={index < 3}
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             </div>
-            <div className="flex flex-1 flex-col gap-2 p-3">
-              <span className="text-xs text-muted-foreground">
-                {example.category}
-              </span>
-              <h2 className="line-clamp-2 text-sm font-semibold">
-                {example.title}
-              </h2>
+            <div className="flex flex-1 flex-col gap-3 p-4">
+              <div className="flex items-center justify-between">
+                <span className="inline-flex items-center rounded-md bg-muted px-2 py-0.5 text-[10px] font-medium text-muted-foreground uppercase tracking-wider">
+                  {example.category}
+                </span>
+                <ArrowUpRight className="h-3 w-3 text-muted-foreground opacity-0 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100 group-hover:text-primary" />
+              </div>
+              <div className="flex flex-col gap-1.5">
+                <h2 className="line-clamp-1 text-base font-semibold tracking-tight group-hover:text-primary transition-colors">
+                  {example.title}
+                </h2>
+                <p className="line-clamp-4 text-xs text-muted-foreground leading-relaxed">
+                  {example.description}
+                </p>
+              </div>
             </div>
           </Link>
         ))}
