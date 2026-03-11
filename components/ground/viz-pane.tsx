@@ -1,5 +1,6 @@
 "use client";
 
+import Script from "next/script";
 import { useEffect, useRef, useState } from "react";
 import { useAppState } from "@/store/use-app-state";
 
@@ -59,6 +60,15 @@ export default function VizPane() {
 
   return (
     <div className="w-full h-full">
+      <Script
+        src="https://gradio-lite-2026.s3.ap-southeast-2.amazonaws.com/lite.js"
+        type="module"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="stylesheet"
+        href="https://gradio-lite-2026.s3.ap-southeast-2.amazonaws.com/lite.css"
+      />
       <gradio-lite ref={gradioRef} shared-worker>
         <gradio-requirements>
           {/* TODO: Support external requirements */}

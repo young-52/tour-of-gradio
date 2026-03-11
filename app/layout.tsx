@@ -3,7 +3,6 @@ import { Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
-import Script from "next/script";
 import NavBar from "@/components/nav-bar";
 
 export const metadata: Metadata = {
@@ -34,21 +33,6 @@ export default async function RootLayout({
     >
       <head>
         <meta name="theme-color" content="var(--background)" />
-        <Script
-          type="module"
-          src="https://gradio.s3-us-west-2.amazonaws.com/6.6.0/gradio.js"
-          crossOrigin="anonymous"
-          strategy="afterInteractive"
-        />
-        <link
-          rel="stylesheet"
-          href="https://gradio-lite-2026.s3.ap-southeast-2.amazonaws.com/lite.css"
-        />
-        <script
-          src="https://gradio-lite-2026.s3.ap-southeast-2.amazonaws.com/lite.js"
-          type="module"
-          crossOrigin="anonymous"
-        />
       </head>
       <body>
         <ThemeProvider
