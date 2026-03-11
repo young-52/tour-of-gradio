@@ -13,7 +13,7 @@ export default function Page() {
       </div>
 
       <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-        {gradioExamples.map((example) => (
+        {gradioExamples.map((example, index) => (
           <Link
             key={example.slug}
             href={`/archives/${example.slug}`}
@@ -25,6 +25,8 @@ export default function Page() {
                 alt={example.title}
                 fill
                 className="object-cover transition duration-300 group-hover:scale-[1.02]"
+                sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 200px"
+                priority={index < 4}
               />
             </div>
             <div className="flex flex-1 flex-col gap-2 p-3">
