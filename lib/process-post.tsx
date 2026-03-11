@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { type CompileMDXResult, compileMDX } from "next-mdx-remote/rsc";
 import ExampleBox from "@/components/example-box";
+import GradioExamplesByCategory from "@/components/gradio-examples-by-category";
 import HelloWorld from "@/components/hello-world";
 import HotspotAudio from "@/components/hotspot-audio";
 import HotspotImage from "@/components/hotspot-image";
@@ -43,6 +44,7 @@ export async function getContentAndFrontmatter(
     components: {
       HelloWorld,
       ExampleBox,
+      GradioExamplesByCategory,
       LlmNextTokenDemo,
       PromptingMethodDemo,
       SystemPromptDemo,
