@@ -50,7 +50,7 @@ export function ToursList({ data }: ToursListProps) {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="absolute inset-0 bg-muted/60 rounded-xl -z-10"
+                    className="absolute inset-0 bg-muted rounded-sm -z-10"
                     transition={{
                       type: "spring",
                       bounce: 0.2,
