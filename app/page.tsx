@@ -2,9 +2,9 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex w-full items-center justify-center dark:bg-black">
-      <main className="flex flex-col gap-8 items-center justify-center bg-white dark:bg-black sm:items-start mb-20">
-        <div className="flex flex-col items-center justify-center gap-2">
+    <div className="flex flex-1 w-full items-center justify-center dark:bg-black">
+      <div className="flex flex-col gap-8 items-center justify-center bg-white dark:bg-black">
+        <div className="flex flex-col items-center justify-center gap-2 text-center">
           <h3 className="text-xl font-bold">LLM? 프롬프팅? 그라디오?</h3>
           <div className="flex flex-col items-center justify-center gap-1">
             <h1 className="text-3xl font-bold">복잡한 현대 세상,</h1>
@@ -19,7 +19,7 @@ export default function Home() {
             알아보기 →
           </span>
         </Link>
-      </main>
+      </div>
     </div>
   );
 }

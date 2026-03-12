@@ -3,7 +3,9 @@ import { Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
+import Link from "next/link";
 import NavBar from "@/components/nav-bar";
+import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: "Tour of Gradio",
@@ -41,9 +43,14 @@ export default async function RootLayout({
           enableSystem
           enableColorScheme
         >
-          <NavBar />
-          <div className="flex min-h-screen max-w-3xl mx-auto pt-20">
-            <div className="flex w-full my-4 mx-2">{children}</div>
+          <div className="flex min-h-svh w-full flex-col px-4 sm:px-6 lg:px-8">
+            <NavBar />
+            <main className="flex flex-1 flex-col">{children}</main>
+            <footer className="my-6 flex h-12 items-center justify-center gap-1">
+              <Button variant="link" className="text-foreground">
+                <Link href="https://knlp.snu.ac.kr">2026 SNUNLP</Link>
+              </Button>
+            </footer>
           </div>
         </ThemeProvider>
       </body>
