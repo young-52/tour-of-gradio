@@ -24,5 +24,4 @@ jobs:
       - name: Check via Biome
         run: yarn lint
       - name: Check markdown
-        run: markdownlint-cli2
-        
+        run: yarn lint:md
