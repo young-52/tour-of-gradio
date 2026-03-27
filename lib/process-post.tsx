@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { type CompileMDXResult, compileMDX } from "next-mdx-remote/rsc";
+import rehypePrettyCode from "rehype-pretty-code";
 import ExampleBox from "@/components/example-box";
 import GradioExamplesByCategory from "@/components/gradio-examples-by-category";
 import HelloWorld from "@/components/hello-world";
@@ -39,6 +40,7 @@ export async function getContentAndFrontmatter(
       parseFrontmatter: true,
       mdxOptions: {
         format: "mdx",
+        rehypePlugins: [[rehypePrettyCode, { theme: "github-dark" }]],
       },
     },
     components: {
