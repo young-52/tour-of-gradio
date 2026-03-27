@@ -1,0 +1,11 @@
+{
+  "globs": ["tours/**/*.mdx", "**/*.md"],
+  "ignores": ["node_modules", ".next", "CHANGELOG.md"],
+  "config": {
+    "MD010": { "code_blocks": false },
+    "MD013": false,
+    "MD026": false,
+    "MD033": false,
+    "MD041": false
+  }
+}

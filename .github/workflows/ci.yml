@@ -21,5 +21,8 @@ jobs:
         run: corepack enable
       - name: Install dependencies
         run: yarn install
-      - name: Check
+      - name: Check via Biome
         run: yarn lint
+      - name: Check markdown
+        run: markdownlint-cli2
+        
