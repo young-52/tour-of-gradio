@@ -1,0 +1,64 @@
+---
+id: 9
+icon: "🔨"
+title: "나만의 챗봇 만들어보기"
+description: "ChatInterface를 활용하여 빠르고 간단하게"
+---
+
+## 🗣️ ChatInterface란?
+
+`ChatInterface`는 Gradio에서 **챗봇 화면(채팅 UI)** 을 아주 빠르게 만드는 '완성품 도구'입니다.
+
+채팅창, 입력창, 전송 버튼, 대화가 쌓이는 화면 같은 것들을 **일일이 배치하지 않아도**, \
+복잡한 UI 코드 없이 **몇 줄만으로 바로 챗봇 데모를 띄울 수 있습니다.**
+
+`ChatInterface`를 사용할 때 **필수로 지정해야 하는 인자**는 챗봇이 어떻게 응답할지를 정해주는 함수인 `fn` 하나입니다.
+
+`fn`으로 전달하는 함수는 언제나 이 **2개를 입력으로** 받아야 합니다.
+
+> 1. 사용자 입력 메시지(`message`)
+> 2. 지금까지의 대화 내역(`history`)
+
+이 개념을 적용하여 지금까지 내가 몇 번 대화했는지를 알려주는 간단한 챗봇 코드를 만들어 볼 수 있습니다.
+
+```python
+import gradio as gr
+
+def chat(message, history):
+    return f"(대화한 횟수: {len(history)}) 최근 메세지: {message}"
+
+demo = gr.ChatInterface(fn=chat)
+demo.launch()
+```
+
+### ❗message, history 말고도 다른 입력값을 fn에 넣어주고 싶다면?
+
+`additional_inputs` 사용
+
+### ❗여러 가지 값을 출력하고 싶다면?
+
+`additional_outputs` 사용
+
+### 예시 코드
+
+```python
+import gradio as gr
+
+def echo(message, history, system_prompt, tokens):
+    reply = f"[SYS] {system_prompt}\n[MSG] {message}"
+    token_count = min(len(reply), int(tokens))
+    return reply, token_count
+
+demo = gr.ChatInterface(
+    fn=echo,
+    additional_inputs=[
+        gr.Textbox(value="You are helpful AI.", label="System Prompt"),
+        gr.Slider(10, 100, value=50, label="Tokens"),
+    ],
+    additional_outputs=[
+        gr.Number(label="Used Tokens"),
+    ],
+)
+
+demo.launch()
+```
