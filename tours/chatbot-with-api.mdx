@@ -1,0 +1,117 @@
+---
+id: 11
+icon: "🌐"
+title: "API 활용한 챗봇 만들어보기"
+description: "다양한 외부 서비스를 연동하는 방법"
+---
+
+## 🔑 OpenAI API 키 발급 받는 방법
+
+### 1️⃣ OpenAI 계정 만들기
+
+- url: [https://openai.com/ko-KR/](https://openai.com/ko-KR/)
+
+오른쪽 위의 로그인 > API 플랫폼을 선택합니다.
+
+![API 플랫폼 선택](/images/api-1.png)
+
+회원가입 후 로그인!
+
+### 2️⃣ API key
+
+- url: [https://platform.openai.com/api-keys](https://platform.openai.com/api-keys)
+- OpenAI에 로그인한 상태로 위 링크에 들어가서
+- 오른쪽 위의 ‘+Create new secret key’를 선택합니다.
+
+![비밀 키 생성 버튼](/images/api-2.png)
+
+- 대충 아무거나 입력하고 ‘Create Secret Key’를 누릅니다.
+
+![비밀 키 생성 화면](/images/api-3.png)
+
+- 그 뒤에 뜨는 이것이 API key입니다. ‘Copy’를 눌러 복사하고 어딘가에 저장해두세요. (두번은 안 가르쳐 주더라고요)
+
+![API 키](/images/api-4.png)
+
+### 3️⃣ 사용료 충전
+
+- url: [https://platform.openai.com/settings/organization/billing/overview](https://platform.openai.com/settings/organization/billing/overview)
+  - 여기서 gpt 사용료를 충전합니다.
+  - 아래 $2.75의 Credit balance가 현재 우리 계정 내 잔액입니다.
+
+![대시보드 화면](/images/api-5.png)
+
+‘Add to credit balance’를 눌러 원하는 만큼 요금을 충전하면 됩니다.
+
+이때 ‘+Add payment method’를 통해 카드 정보를 넣어 주시고요…
+
+- ChatGPT-4o 기준으로 100만 토큰(token) 입력 $5, 출력 $10이 책정되어 있습니다.
+- 단어 하나당 아주 넉넉하게 토큰 10개 정도 들어간다고 쳐도 10달러면 한참 쓰겠죠…?
+- 근데 채니는 한마디 넣으면 백마디 뱉어서 출력으로 돈을 많이 뺏어가는 것 같아요(ㅋㅋ)
+
+![사용료 충전 화면](/images/api-6.png)
+
+## 💬 OpenAI 챗봇 연결하기
+
+발급 받은 OpenAI 키 & 내가 작성한 프롬프트를 사용하여 OpenAI 챗봇을 만들 수 있는 코드를 만들어 봅시다.
+
+### 🤖 OpenAI가 지원하는 모델의 종류는?
+
+- `gpt-4o-mini`
+  - 텍스트 & 이미지 입력
+  - 텍스트 출력
+- `gpt-image-1`
+  - 텍스트 입력
+  - 생성된 이미지 출력
+- `gpt-4o-audio-preview`
+  - 음성 입력
+  - 텍스트 답변 출력
+
+… 등등 다양한 모델이 존재합니다!
+
+더 많은 모델을 살펴보려면 [https://platform.openai.com/docs/models](https://platform.openai.com/docs/models)를 참고하세요.
+
+우선 가장 간단하게 gpt-4o-mini에 텍스트 입력을 받고 텍스트 답변을 받는 코드를 만들어 봅시다.
+
+다양한 프롬프트를 사용하여 답변이 어떻게 출력되는지 확인해보세요!
+
+```python
+from langchain_openai import ChatOpenAI
+from langchain.schema import AIMessage, HumanMessage, SystemMessage
+import gradio as gr
+
+# ✅ API 키를 코드에 직접 넣기
+OPENAI_API_KEY = "나의 키 넣어주기"
+
+# ✅ 시스템 프롬프트
+SYSTEM_PROMPT = "프롬프트 넣어주기"
+
+model = ChatOpenAI(
+    model="gpt-4o-mini",
+    api_key=OPENAI_API_KEY,
+)
+
+def predict(message, history):
+    messages = [SystemMessage(content=SYSTEM_PROMPT)]
+
+    # Gradio history -> LangChain message 포맷
+    for msg in history:
+        if msg["role"] == "user":
+            messages.append(HumanMessage(content=msg["content"]))
+        elif msg["role"] == "assistant":
+            messages.append(AIMessage(content=msg["content"]))
+
+    # 이번 사용자 입력 추가
+    messages.append(HumanMessage(content=message))
+
+    # 호출
+    gpt_response = model.invoke(messages)
+    return gpt_response.content
+
+demo = gr.ChatInterface(
+    fn=predict,
+    api_name="chat",
+)
+
+demo.launch()
+```
