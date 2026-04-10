@@ -5,6 +5,7 @@
     "MD010": { "code_blocks": false },
     "MD013": false,
     "MD026": false,
+    "MD029": { "style": "one_or_ordered" },
     "MD033": false,
     "MD041": false
   }
