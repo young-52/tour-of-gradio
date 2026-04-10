@@ -9613,7 +9613,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"remark-gfm@npm:^4.0.1":
+"remark-gfm@npm:^4.0.0, remark-gfm@npm:^4.0.1":
   version: 4.0.1
   resolution: "remark-gfm@npm:4.0.1"
   dependencies:
@@ -10597,6 +10597,7 @@ __metadata:
     react-dom: "npm:19.2.3"
     react-resizable-panels: "npm:^4"
     rehype-pretty-code: "npm:^0.14.3"
+    remark-gfm: "npm:^4.0.0"
     shadcn: "npm:^3.8.5"
     shiki: "npm:^4.0.2"
     tailwind-merge: "npm:^3.5.0"
