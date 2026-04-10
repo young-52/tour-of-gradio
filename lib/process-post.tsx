@@ -1,8 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import { type CompileMDXResult, compileMDX } from "next-mdx-remote/rsc";
-import remarkGfm from "remark-gfm";
 import rehypePrettyCode from "rehype-pretty-code";
+import remarkGfm from "remark-gfm";
 import ExampleBox from "@/components/example-box";
 import GradioExamplesByCategory from "@/components/gradio-examples-by-category";
 import HelloWorld from "@/components/hello-world";
