@@ -13,6 +13,21 @@ export const gradioExampleSections: Array<{
   examples: GradioExample[];
 }> = [
   {
+    category: "LLM 기반 서비스 제작",
+    examples: [
+      {
+        slug: "snu-shamanism",
+        title: "샤:머니즘",
+        imageSrc: "/images/c4ai-command.png",
+        href: "https://huggingface.co/spaces/young-52/snu-shamanism",
+        embedSrc: "https://young-52-snu-shamanism.hf.space",
+        description:
+          "서울대학교 학생을 위한 운세 서비스로, 사용자의 사주를 분석하여 서울대학교 캠퍼스 내의 장소와 카페를 추천합니다.",
+        category: "LLM 기반 서비스 제작",
+      },
+    ],
+  },
+  {
     category: "수업·강의용",
     examples: [
       {
