@@ -18,7 +18,7 @@ export const gradioExampleSections: Array<{
       {
         slug: "snu-shamanism",
         title: "샤:머니즘",
-        imageSrc: "/images/c4ai-command.png",
+        imageSrc: "/images/snu-shamanism.png",
         href: "https://huggingface.co/spaces/young-52/snu-shamanism",
         embedSrc: "https://young-52-snu-shamanism.hf.space",
         description:
