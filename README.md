@@ -59,6 +59,7 @@ yarn dev
 
 ## 기여자
 
+- 이상아 [sanalee@snu.ac.kr](sanalee@snu.ac.kr)
 - 권아연 [kaa0710622@snu.ac.kr](kaa0710622@snu.ac.kr)
 - 박준영 [bloomwayz@snu.ac.kr](bloomwayz@snu.ac.kr)
 - 심지혜 [jasisland@snu.ac.kr](jasisland@snu.ac.kr)
